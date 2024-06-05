@@ -1,0 +1,35 @@
+<div class="data">
+    <h1>Ingreso de Mascotas</h1>
+    <form  [formGroup]="mascotaData" (ngSubmit)="ingresarMascota()" novalidate>
+        <div class="form-fiel">
+            <mat-form-field class="nombre">
+                <mat-label>Nombre Mascota</mat-label>
+                <input matInput placeholder="escriba el nombre de su mascota" formControlName="nombre" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Prioridad</mat-label>
+                <mat-select formControlName="raza">
+                    <mat-option value="1">Perro</mat-option>
+                    <mat-option value="2">Gato</mat-option>
+                    <mat-option value="3">Ave</mat-option>
+                    <mat-option value="4">Pez</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="form-submit">
+                <button
+                    mat-flat-button 
+                    color="accent"
+                    [disabled]="!mascotaData.valid"
+                    mat-raised-button
+                    type="submit"
+                >
+                    <span>Grabar</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <app-listado></app-listado>
+</div>

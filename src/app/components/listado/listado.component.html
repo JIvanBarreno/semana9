@@ -1,0 +1,49 @@
+<div class="data">
+    <h1>Lista de Moscotas</h1>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="raza">
+            <th mat-header-cell *matHeaderCellDef> Raza </th>
+            <td mat-cell *matCellDef="let element"> 
+                <img src="../../../assets/img/{{element.raza}}.jpg" alt=""> 
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="borrar">
+            <th mat-header-cell *matHeaderCellDef> Borrar </th>
+            <td mat-cell *matCellDef="let element">
+                <button 
+                    mat-raised-button 
+                    color="warn"
+                    class="delete"
+                    (click)="deleteMascota(element)"
+                >
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef> Editar </th>
+            <td mat-cell *matCellDef="let element"> 
+                <button 
+                    mat-raised-button 
+                    color="accent"
+                    class="delete"
+                    (click)="editMascota(element)"
+                >
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data"</td>
+        </tr>
+    </table>
+</div>
